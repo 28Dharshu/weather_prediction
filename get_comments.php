@@ -1,8 +1,9 @@
 <?php
 session_start();
+require_once 'config.php';
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -11,13 +12,6 @@ if (!isset($_GET['post_id'])) {
 }
 
 $post_id = intval($_GET['post_id']);
-
-$host = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "my_auth_db";
-
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

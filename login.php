@@ -1,12 +1,6 @@
 <?php
 session_start();
-
-$host = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "my_auth_db";
-
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+require_once 'config.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -48,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             
-                            header("location: welcome.php");
+                            header("Location: welcome.php");
                             exit;
                         } else {
                             $password_err = "Invalid password.";

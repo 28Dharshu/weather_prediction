@@ -1,12 +1,5 @@
 <?php
-// Database configuration
-$host = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "my_auth_db";
-
-// Create database connection
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+require_once 'config.php';
 
 // Check connection
 if ($conn->connect_error) {

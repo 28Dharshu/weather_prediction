@@ -1,21 +1,13 @@
 <?php
 // Initialize the session
 session_start();
+require_once 'config.php';
 
 // Check if the user is logged in, if not then redirect to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    header("Location: login.php");
     exit;
 }
-
-// Database configuration
-$host = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "my_auth_db";
-
-// Create connection
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
 // Check connection
 if ($conn->connect_error) {
