@@ -1,0 +1,29 @@
+# Environments and secrets
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Local database data & instances (do NOT commit local data files)
+postgres_data/
+instance/
+*.db
+*.sqlite3
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Ignore user uploads (keep only .gitkeep)
+uploads/*
+!uploads/.gitkeep
+
+# Helper generator scripts
+generate_report_docx.py
+
+# OS generated files
+.DS_Store
+Thumbs.db

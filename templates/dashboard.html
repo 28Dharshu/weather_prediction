@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Modern App</title>
+    <!-- Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-layer-group"></i> ModernApp</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-item">
+                    <a href="/dashboard" class="active">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="/profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="/gallery">
+                        <i class="fas fa-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="header">
+                <h1>Welcome, <span id="welcomeUsername">User</span>!</h1>
+                <div class="user-profile">
+                    <div class="user-avatar current-user-avatar">U</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid: Info, Weather, News -->
+            <div class="grid-container">
+                <!-- User Info Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Your Profile</h3>
+                        <div class="icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <p><strong>Username:</strong> <span id="infoUsername">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="infoEmail">Loading...</span></p>
+                        <p><strong>Location:</strong> <span id="infoLocation">Loading...</span></p>
+                    </div>
+                    <div style="margin-top: 18px;">
+                        <a href="/profile" class="btn btn-outline btn-sm" style="width:100%;">
+                            <i class="fas fa-user-edit"></i> View Full Profile
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Weather Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Local Weather</h3>
+                        <div class="icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                    </div>
+                    <div id="weatherContent">
+                        <div style="text-align:center; padding:30px 0; color:var(--gray);">
+                            <i class="fas fa-spinner fa-spin" style="font-size:24px;"></i>
+                            <p style="margin-top:10px; font-size:13px;">Fetching weather...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Top Headlines</h3>
+                        <div class="icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                    <div id="newsContent" class="news-content">
+                        <div style="text-align:center; padding:30px 0; color:var(--gray);">
+                            <i class="fas fa-spinner fa-spin" style="font-size:24px;"></i>
+                            <p style="margin-top:10px; font-size:13px;">Fetching latest news...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Post Section -->
+            <section class="upload-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="font-size:18px; font-weight:600;">Share a Photo</h3>
+                        <p style="font-size:13px; color:var(--gray);">Upload photos to your feed and community gallery</p>
+                    </div>
+                    <button id="togglePostFormBtn" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus"></i> Create New Post
+                    </button>
+                </div>
+
+                <!-- Collapsible Upload Form -->
+                <div id="postFormContainer" class="post-form-collapse">
+                    <form id="createPostForm" enctype="multipart/form-data">
+                        <div id="uploadDropzone" class="file-dropzone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p><strong>Click to choose an image</strong> or drag and drop</p>
+                            <span style="font-size:12px; color:var(--gray);">JPG, PNG, JPEG, GIF (Max 5MB)</span>
+                            <input type="file" id="postImageInput" name="post_image" accept="image/*" style="display:none;" required>
+                            <img id="imagePreview" class="image-preview" alt="Preview">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postCaption">Caption (optional)</label>
+                            <input type="text" id="postCaption" name="caption" class="form-control" placeholder="What's on your mind?">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width:100%;">
+                            <i class="fas fa-paper-plane"></i> Publish Post
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- User Posts Feed -->
+            <section>
+                <h2 style="font-size:22px; font-weight:700; margin-bottom:20px;">Your Feed</h2>
+                <div id="userPostsContainer">
+                    <div style="text-align:center; padding:40px; color:var(--gray);">
+                        <i class="fas fa-spinner fa-spin" style="font-size:28px;"></i>
+                        <p style="margin-top:10px;">Loading posts...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

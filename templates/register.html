@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Modern Auth</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p>Fill out the form below to register your account</p>
+            </div>
+
+            <div class="auth-body">
+                <div id="alertBox" class="alert"></div>
+
+                <form id="registerForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required>
+                        <span id="username_error" class="error-feedback"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
+                        <span id="email_error" class="error-feedback"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location (City)</label>
+                        <input type="text" id="location" name="location" class="form-control" placeholder="e.g. London, New York, Tokyo" required>
+                        <span id="location_error" class="error-feedback"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password (min. 6 characters)</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter secure password" required minlength="6">
+                        <span id="password_error" class="error-feedback"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Repeat your password" required>
+                        <span id="confirm_password_error" class="error-feedback"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding:12px; margin-top:10px;">
+                        Create Account
+                    </button>
+                </form>
+            </div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>
